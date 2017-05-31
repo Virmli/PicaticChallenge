@@ -1,0 +1,43 @@
+<div ng-hide="vm.loggedIn" class="screen-overlay">
+    <md-content class="screen-overlay-inner" layout="column" layout-align="center center">
+
+        <div layout="row" layout-align="center center">
+
+            <img src="/images/picaticLogo.svg" style="max-width: 20rem; margin: 2rem;">
+        </div>
+        <div layout="row" layout-align="center">
+            <md-card style="height:100%">
+
+                <md-card-header >
+                    <md-card-header-text>
+                        <span class="md-title">Authenticate user</span>
+                    </md-card-header-text>
+                </md-card-header>
+                <md-card-content>
+                    <form md-theme="alt" ng-cloak name="loginForm" >
+                        <fieldset ng-disabled="isSending">
+                            <div ng-if="isSending" class="formSending" layout="row" layout-align="center center" layout-padding>
+                                <md-progress-circular class="md-accent md-hue-3" md-diameter="50" md-mode="indeterminate"></md-progress-circular>
+                            </div>
+                            <div>
+                                <div layout="column">
+                                    <md-input-container>
+                                        <label>API Access Key</label>
+                                        <input ng-model="vm.accessKey" type="text" required name="accessKey">
+                                    </md-input-container>
+                                </div>
+                            </div>
+                            <md-dialog-actions layout="row" layout-align="center center">
+                                <md-button type="submit" class="md-primary md-raised" ng-click="vm.login()">
+                                    Login
+                                </md-button>
+                            </md-dialog-actions>
+                        </fieldset>
+                    </form>
+                </md-card-content>
+            </md-card>
+        </div>
+</div>
+
+</md-content>
+</div>

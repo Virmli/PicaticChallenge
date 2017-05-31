@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Picatic Front-End Challenge</title>
+    <!-- STYLESHEETS -------------------------------------------------------------------------------------------------->
+
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- REQUIRE JS --------------------------------------------------------------------------------------------------->
+    <script src="bower_components/requirejs/require.js"
+            data-main="config/requireConfig.js"></script>
+</head>
+<body ng-controller="mainController as main" layout="row" ng-cloak>
+<login-overlay></login-overlay>
+<div layout="column" flex>
+    <header>
+        <md-toolbar md-whiteframe="1" class="md-toolbar-tools md-hue-2">
+            <md-button class="md-icon-button" ng-click="main.toggleSidenav('left')"
+                       aria-label="Toggle Menu">
+                <md-icon md-font-icon="fa fa-bars fa-lg"></md-icon>
+            </md-button>
+            <img width="250" src="images/picaticLogo-white.svg">
+            <span flex></span>
+            <md-menu>
+                <md-button layout="row" layout-align="center center" ng-click="$mdOpenMenu($event)">
+                    <md-icon md-menu-origin md-font-icon="fa fa-user-circle fa-lg"></md-icon>
+                    {{main.AUTH.user.attributes.first_name}} {{main.AUTH.user.attributes.last_name}}
+                </md-button>
+                <md-menu-content width="2">
+                            Log Out
+                </md-menu-content>
+            </md-menu>
+        </md-toolbar>
+    </header>
+    <md-sidenav id="mainNav" class="md-sidenav-left" md-component-id="left" md-whiteframe="4">
+        <md-content >
+            Event menu goes here.
+            <!--<div ng-repeat="(category, subpages) in main.AUTH.pages">-->
+                <!--<md-subheader ng-if="category !== 'navSite' || !main.siteOpDesc" style="background: none">{{category | translate}}</md-subheader>-->
+                <!--<md-subheader ng-if="category === 'navSite' && main.siteOpDesc" style="background: none">{{main.siteOpDesc}}</md-subheader>-->
+                <!--<md-list>-->
+                    <!--<md-list-item ng-repeat="(name, page) in subpages" ng-click="main.goTo(page.url)"-->
+                                  <!--ng-class="{'menu-item-selected': page.selected }"-->
+                                  <!--md-colors="{color: page.selected ? 'accent' : ''}">-->
+                        <!--<div class="sidenav-pages" layout="row" layout-align="start center">-->
+                            <!--<md-icon md-font-icon="cwi fa-lg"-->
+                                     <!--md-colors="{color: page.selected ? 'default-accent' : ''}"-->
+                                     <!--style="width: 3rem; text-align: center;"-->
+                                     <!--ng-bind-html="'&#x'+ page.icon || f000"></md-icon>-->
+                            <!--<span>{{name | translate}}</span>-->
+                            <!--<span flex></span>-->
+                        <!--</div>-->
+                    <!--</md-list-item>-->
+                <!--</md-list>-->
+            <!--</div>-->
+        </md-content>
+    </md-sidenav>
+
+    <main layout="row" flex>
+        <!-------------------------------------------- VIEW -->
+        <div id="mainView" ng-view flex class="page-transition"></div>
+        <!---------------------------------------------------->
+    </main>
+    <footer id="footer">
+        <md-toolbar class="md-toolbar-tools md-hue-2 short-tool-bar">
+            <div layout="row" layout-align="center center" class="md-caption" flex>
+                Copyright &copy; Maksym Syvozhelizov Picatic Challenge.
+            </div>
+        </md-toolbar>
+    </footer>
+</div>
+</body>
+</html>
