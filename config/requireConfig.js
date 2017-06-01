@@ -17,6 +17,7 @@ require.config({
         'angular-sanitize': '../bower_components/angular-sanitize/angular-sanitize.min',
         'angular-translate': '../bower_components/angular-translate/angular-translate.min',
         'angular-dynamic-locale': '../bower_components/angular-dynamic-locale/angular-dynamic-locale',
+        'angular-material-data-table': '../bower_components/angular-material-data-table/dist/md-data-table.min',
 
     },
     shim: {
@@ -41,6 +42,9 @@ require.config({
             deps: ['angular'],
         },
         'angular-sanitize': {
+            deps: ['angular'],
+        },
+        'angular-material-data-table': {
             deps: ['angular'],
         },
     },

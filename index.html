@@ -9,6 +9,8 @@
 
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bower_components/angular-material-data-table/dist/md-data-table.min.css">
+
     <link rel="stylesheet" href="css/style.css">
     <!-- REQUIRE JS --------------------------------------------------------------------------------------------------->
     <script src="bower_components/requirejs/require.js"
@@ -43,20 +45,26 @@
         </md-toolbar>
     </header>
     <md-sidenav id="mainNav" class="md-sidenav-left" md-component-id="left" md-whiteframe="4">
-        <md-content >
+        <md-toolbar >
+            <h1 class="md-toolbar-tools">Select an Event</h1>
+        </md-toolbar>
+        <md-content>
             <div ng-repeat="item in main.AUTH.menu">
                 <md-subheader ng-if="item.category === 'Live' && item.menu.length > 0" style="background: none">{{item.category}}</md-subheader>
                 <md-subheader ng-if="item.category === 'Draft' && item.menu.length > 0" style="background: none">{{item.category}}</md-subheader>
                 <md-subheader ng-if="item.category === 'Close' && item.menu.length > 0" style="background: none">{{item.category}}</md-subheader>
                 <md-list>
-                    <md-list-item ng-repeat="menu in item.menu" ng-click="main.goTo(item.url)">
-                        <div class="sidenav-pages" layout="row" layout-align="start center">
-                            <span>{{menu.attributes.title}}</span>
-                            <span flex></span>
+                    <md-list-item class="md-2-line" ng-repeat="menu in item.menu" ng-click="main.goTo(item.url, menu.id)">
+                        <div class="md-list-item-text">
+                            <h3 class="md-subhead">{{menu.attributes.title}}</h3>
+                            <h4>{{menu.attributes.end_date | date: 'mediumDate'}}</h4>
                         </div>
+                        <md-icon class="md-secondary" md-font-icon="fa fa-angle-right"></md-icon>
+                        <md-divider></md-divider>
                     </md-list-item>
                 </md-list>
             </div>
+            <img id="menuLogo" width="120" src="images/picaticLogo.svg">
         </md-content>
     </md-sidenav>
 

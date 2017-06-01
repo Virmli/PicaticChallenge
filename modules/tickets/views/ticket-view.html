@@ -1,0 +1,49 @@
+<md-toolbar class="md-hue-1">
+    <div class="md-toolbar-tools">
+        Tickets
+    </div>
+</md-toolbar>
+<md-content>
+    <md-table-container>
+        <table md-table md-row-select multiple ng-model="selected" md-progress="promise">
+            <thead md-head class="tableHead">
+            <tr md-row>
+                <th md-column flex="30">Ticket Name</th>
+                <th md-column flex="20">Qty</th>
+                <th md-column flex="20">Price</th>
+                <th md-column flex="20">Status</th>
+                <th md-column flex="10"></th>
+            </tr>
+            </thead>
+            <tbody md-body>
+            <tr md-row md-select="ticket" ng-repeat="ticket in vm.TICKETS.tickets.ticketList">
+                <td md-cell flex="30">
+                    <span ng-if="!ticket.editMode">{{ticket.attributes.name}}</span>
+                    <input ng-if="ticket.editMode" ng-model="ticket.attributes.name">
+                </td>
+                <td md-cell flex="20">
+                    <span ng-if="!ticket.editMode">{{ticket.attributes.quantity}}</span>
+                    <input ng-if="ticket.editMode" pattern="^\d{1,7}$" type="number" ng-model="ticket.attributes.quantity">
+                </td>
+                <td md-cell flex="20">
+                    <span ng-if="!ticket.editMode">{{ticket.attributes.price}}</span>
+                    <input ng-if="ticket.editMode" ng-model="ticket.attributes.price">
+                </td>
+                <td md-cell flex="20">
+                    <span ng-if="!ticket.editMode">{{ticket.attributes.status}}</span>
+                    <md-select ng-if="ticket.editMode" ng-model="ticket.attributes.status">
+                        <md-option style="text-transform: capitalize" ng-repeat="status in vm.ticketStatus" value="{{status}}">
+                            {{status}}
+                        </md-option>
+                    </md-select>
+                </td>
+                <td md-cell flex="10">
+                    <md-button ng-if="!ticket.editMode" class="md-primary md-raised" ng-click="vm.editTicket(ticket)">Edit</md-button>
+                    <md-button ng-if="ticket.editMode" class="md-primary md-raised saveButton" ng-click="vm.saveTicket(ticket)">Save</md-button>
+                    <md-button ng-if="ticket.editMode" class="md-primary md-raised" ng-click="vm.cancelTicket(ticket)">Cancel</md-button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </md-table-container>
+</md-content>

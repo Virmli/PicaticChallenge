@@ -36,7 +36,7 @@ define(['angular'], angular => angular.module('authFactory', [])
                 },
             ];
             pages.forEach((page) => {
-                if (page.attributes.status === 'live') {
+                if (page.attributes.status === 'active') {
                     constructedMenu[0].menu.push(page);
                 } else if (page.attributes.status === 'draft') {
                     constructedMenu[1].menu.push(page);

@@ -12,3 +12,13 @@
     overflow: scroll;
 
 }
+.tableHead {
+    background: rgb(216, 216, 216);
+}
+.saveButton {
+    background-color: #33CB7B !important;
+}
+#menuLogo {
+    margin-left: 26%;
+    margin-top: 40%;
+}
