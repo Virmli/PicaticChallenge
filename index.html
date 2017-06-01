@@ -44,25 +44,19 @@
     </header>
     <md-sidenav id="mainNav" class="md-sidenav-left" md-component-id="left" md-whiteframe="4">
         <md-content >
-            Event menu goes here.
-            <!--<div ng-repeat="(category, subpages) in main.AUTH.pages">-->
-                <!--<md-subheader ng-if="category !== 'navSite' || !main.siteOpDesc" style="background: none">{{category | translate}}</md-subheader>-->
-                <!--<md-subheader ng-if="category === 'navSite' && main.siteOpDesc" style="background: none">{{main.siteOpDesc}}</md-subheader>-->
-                <!--<md-list>-->
-                    <!--<md-list-item ng-repeat="(name, page) in subpages" ng-click="main.goTo(page.url)"-->
-                                  <!--ng-class="{'menu-item-selected': page.selected }"-->
-                                  <!--md-colors="{color: page.selected ? 'accent' : ''}">-->
-                        <!--<div class="sidenav-pages" layout="row" layout-align="start center">-->
-                            <!--<md-icon md-font-icon="cwi fa-lg"-->
-                                     <!--md-colors="{color: page.selected ? 'default-accent' : ''}"-->
-                                     <!--style="width: 3rem; text-align: center;"-->
-                                     <!--ng-bind-html="'&#x'+ page.icon || f000"></md-icon>-->
-                            <!--<span>{{name | translate}}</span>-->
-                            <!--<span flex></span>-->
-                        <!--</div>-->
-                    <!--</md-list-item>-->
-                <!--</md-list>-->
-            <!--</div>-->
+            <div ng-repeat="item in main.AUTH.menu">
+                <md-subheader ng-if="item.category === 'Live' && item.menu.length > 0" style="background: none">{{item.category}}</md-subheader>
+                <md-subheader ng-if="item.category === 'Draft' && item.menu.length > 0" style="background: none">{{item.category}}</md-subheader>
+                <md-subheader ng-if="item.category === 'Close' && item.menu.length > 0" style="background: none">{{item.category}}</md-subheader>
+                <md-list>
+                    <md-list-item ng-repeat="menu in item.menu" ng-click="main.goTo(item.url)">
+                        <div class="sidenav-pages" layout="row" layout-align="start center">
+                            <span>{{menu.attributes.title}}</span>
+                            <span flex></span>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </div>
         </md-content>
     </md-sidenav>
 

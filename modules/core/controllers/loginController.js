@@ -12,7 +12,7 @@ define(['angular'], angular => angular.module('loginController', [])
                 .then((res) => {
                     $scope.isSending = false;
                     vm.loggedIn = true;
-                    console.log(res);
+                    AUTH.pages(res.id);
                 })
                 .catch((err) => {
                     console.log(err);

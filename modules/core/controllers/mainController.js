@@ -15,9 +15,6 @@ define(['angular'], angular => angular.module('mainController', [])
 
         main.currentPath = $location.path();
 
-        // main.menu = [
-        //     {type}
-        // ]
         /** ************************************************************************************
          * HELPER FUNCTIONS
          */

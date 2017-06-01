@@ -9,16 +9,47 @@ define(['angular'], angular => angular.module('authFactory', [])
     .factory('AUTH', ($location, appConfig, $log, $http) => {
         const apiObj = {
             get: {
-                user: () => $http.get('https://api.picatic.com/v2/user/me'),
+                user: () => $http.get(`${appConfig.defaultUrl}user/me`),
+                // TODO: pagination?
+                allEvents: userId => $http.get(`${appConfig.defaultUrl}event?filter[user_id]=${userId}&page[limit]=${appConfig.paging}&page[offset]=0`),
             },
         };
 
         const auth = {};
 
+        function filterMenu(pages) {
+            const constructedMenu = [
+                {
+                    url: '/tickets',
+                    menu: [],
+                    category: 'Live',
+                },
+                {
+                    url: '/tickets',
+                    menu: [],
+                    category: 'Draft',
+                },
+                {
+                    url: '/tickets',
+                    menu: [],
+                    category: 'Close',
+                },
+            ];
+            pages.forEach((page) => {
+                if (page.attributes.status === 'live') {
+                    constructedMenu[0].menu.push(page);
+                } else if (page.attributes.status === 'draft') {
+                    constructedMenu[1].menu.push(page);
+                } else {
+                    constructedMenu[2].menu.push(page);
+                }
+            });
+
+            return constructedMenu;
+        }
         /**
          * Logs in the user.
-         * @param userId
-         * @param password
+         * @param token
          */
         auth.login = (token) => {
             auth.token = null;
@@ -31,11 +62,20 @@ define(['angular'], angular => angular.module('authFactory', [])
                         return false;
                     }
                     auth.token = token;
+                    auth.userId = result.data.id;
                     auth.user = result.data.data;
                     $log.debug('authenticate');
                     return result.data.data;
                 });
         };
+
+        auth.pages = userId => apiObj.get.allEvents(userId)
+                .then((result) => {
+                    if (result.data.data.length > 0) {
+                        auth.menu = filterMenu(result.data.data);
+                    }
+                });
+
 
         return auth;
     }));
