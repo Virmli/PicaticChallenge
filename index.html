@@ -31,7 +31,13 @@
                     {{main.AUTH.user.attributes.first_name}} {{main.AUTH.user.attributes.last_name}}
                 </md-button>
                 <md-menu-content width="2">
+                    <md-menu-item>
+                        <md-button ng-click="main.logout()">
+                            <md-icon md-menu-align-target
+                                     md-font-icon="fa fa-user-o fa-lg"></md-icon>
                             Log Out
+                        </md-button>
+                    </md-menu-item>
                 </md-menu-content>
             </md-menu>
         </md-toolbar>

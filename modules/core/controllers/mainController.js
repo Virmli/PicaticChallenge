@@ -21,8 +21,6 @@ define(['angular'], angular => angular.module('mainController', [])
         /** ************************************************************************************
          * HELPER FUNCTIONS
          */
-
-
         main.toggleSidenav = (id) => {
             $mdSidenav(id).toggle();
         };
@@ -30,5 +28,9 @@ define(['angular'], angular => angular.module('mainController', [])
         main.goTo = (url) => {
             $location.path(url);
             $mdSidenav('left').close();
+        };
+
+        main.logout = () => {
+            window.location.reload(true);
         };
     }));
