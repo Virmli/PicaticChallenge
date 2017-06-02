@@ -5,7 +5,7 @@ define(['angular'], angular => angular.module('mainController', [])
     .config(($logProvider, coreConfig) => {
         $logProvider.debugEnabled(coreConfig.debugEnabled);
     })
-    .controller('mainController', function mainController(AUTH, TICKETS, $location, $rootScope, appConfig, $mdSidenav) {
+    .controller('mainController', function mainController(AUTH, TICKETS, $location, $rootScope, appConfig, $mdSidenav, $cookies) {
         /** ************************************************************************************
          * SET UP VARIABLES
          */
@@ -42,6 +42,7 @@ define(['angular'], angular => angular.module('mainController', [])
          */
         main.logout = () => {
             $location.path('/');
+            $cookies.remove('token');
             window.location.reload(true);
         };
     }));

@@ -29,6 +29,8 @@ define(['angular'], angular => angular.module('ticketsController', [])
          * @param ticket
          */
         vm.saveTicket = (ticket) => {
+
+            // TODO: impliment error checking.
             // constructing new object for DB call.
             const data = {
                 data: {

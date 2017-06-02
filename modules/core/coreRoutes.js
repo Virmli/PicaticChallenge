@@ -13,7 +13,7 @@ define(['angular'], angular => angular.module('coreRoutes', ['ngRoute', 'appConf
                 resolveRedirectTo: `${coreConfig.baseUrl}views/no-events.html`,
             });
 
-        $locationProvider.html5Mode(true);
+        $locationProvider.html5Mode(false);
     })
     .directive('loginOverlay', coreConfig => ({
         restrict: 'E',

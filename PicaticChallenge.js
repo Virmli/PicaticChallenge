@@ -10,6 +10,7 @@ define([
     // EXTERNAL DEPENDENCIES -----------------------------------------------------------------------
     'angular', 'angular-animate', 'angular-aria', 'angular-material',
     'angular-route', 'angular-sanitize', 'angular-translate', 'angular-material-data-table',
+    'angular-cookies',
 
     // CONFIG --------------------------------------------------------------------------------------
     '../config/appConfig',
@@ -22,7 +23,7 @@ define([
     // name to the dependencies in the return statement below
 ], angular => angular.module('PicaticChallenge', [
     // EXTERNAL DEPENDENCIES -------------------------------------------------------------------
-    'ngRoute', 'ngMaterial', 'ngSanitize', 'ngAnimate', 'md.data.table',
+    'ngRoute', 'ngMaterial', 'ngSanitize', 'ngAnimate', 'md.data.table', 'ngCookies',
 
     // CONFIG ----------------------------------------------------------------------------------
     'appConfig',
