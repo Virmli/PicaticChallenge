@@ -23,6 +23,13 @@ define(['angular'], angular => angular.module('mainController', [])
             $mdSidenav(id).toggle();
         };
 
+        /**
+         * Go to function handles page redirection when user click on a menu item.
+         * In our case its only one page 'tickets'. But in future its easy to customize
+         * different page support if each menu Item have its personal page.
+         * @param url
+         * @param id
+         */
         main.goTo = (url, id) => {
             $location.path(url);
             // call tickets.
@@ -30,6 +37,9 @@ define(['angular'], angular => angular.module('mainController', [])
             $mdSidenav('left').close();
         };
 
+        /**
+         * Logout function imitates simple user logout functionality.
+         */
         main.logout = () => {
             $location.path('/');
             window.location.reload(true);

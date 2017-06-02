@@ -2,8 +2,9 @@
  * Created by maksym on 2017-05-31.
  */
 define(['angular'], angular => angular.module('ticketsFactory', [])
-/** ********************************************************************************************
- * TICKETS FACTORY
+/**
+ * TICKETS FACTORY provides abstracted way for controllers to access specific API.
+ * Also handles data storage for use throughout the project.
  */
     .factory('TICKETS', ($location, appConfig, $log, $http) => {
         const apiObj = {

@@ -1,7 +1,5 @@
 /**
  * Created by maksym on 2017-05-29.
- */
-/**
  * DESCRIPTION
  * This is where we can link our bower_components dependencies that would have normally gone to
  * index.html
@@ -24,8 +22,6 @@ require.config({
         angular: {
             exports: 'angular',
         },
-        // these should have jspm / system js configs, but don't seem to work. So I added the
-        // dependencies here
         'angular-animate': {
             deps: ['angular'],
         },
