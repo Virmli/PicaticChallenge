@@ -30,10 +30,11 @@ define(['angular'], angular => angular.module('mainController', [])
          * @param url
          * @param id
          */
-        main.goTo = (url, id) => {
+        main.goTo = (url, id, eventName) => {
             $location.path(url);
             // call tickets.
             TICKETS.tickets.eventTickets(id);
+            TICKETS.tickets.eventName = eventName;
             $mdSidenav('left').close();
         };
 

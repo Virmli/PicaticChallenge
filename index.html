@@ -54,7 +54,7 @@
                 <md-subheader ng-if="item.category === 'Draft' && item.menu.length > 0" style="background: none">{{item.category}}</md-subheader>
                 <md-subheader ng-if="item.category === 'Close' && item.menu.length > 0" style="background: none">{{item.category}}</md-subheader>
                 <md-list>
-                    <md-list-item class="md-2-line" ng-repeat="menu in item.menu" ng-click="main.goTo(item.url, menu.id)">
+                    <md-list-item class="md-2-line" ng-repeat="menu in item.menu" ng-click="main.goTo(item.url, menu.id, menu.attributes.title)">
                         <div class="md-list-item-text">
                             <h3 class="md-subhead">{{menu.attributes.title}}</h3>
                             <h4>{{menu.attributes.end_date | date: 'mediumDate'}}</h4>
