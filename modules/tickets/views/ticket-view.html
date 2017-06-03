@@ -16,18 +16,33 @@
             </tr>
             </thead>
             <tbody md-body>
-            <tr md-row md-select="ticket" ng-repeat="ticket in vm.TICKETS.tickets.ticketList">
+            <tr ng-form="ticketRow" md-row md-select="ticket" ng-repeat="ticket in vm.TICKETS.tickets.ticketList">
                 <td md-cell flex="30">
                     <span ng-if="!ticket.editMode">{{ticket.attributes.name}}</span>
-                    <input ng-if="ticket.editMode" ng-model="ticket.attributes.name">
+                    <md-input-container ng-if="ticket.editMode">
+                        <input required name="name" pattern="^(?!\s*$).+" ng-model="ticket.attributes.name">
+                        <div ng-messages="ticketRow.name.$error">
+                            <div ng-message-exp="['pattern', 'required']">This should not be empty.</div>
+                        </div>
+                    </md-input-container>
                 </td>
                 <td md-cell flex="20">
                     <span ng-if="!ticket.editMode">{{ticket.attributes.quantity}}</span>
-                    <input ng-if="ticket.editMode" pattern="^\d{1,7}$" type="number" ng-model="ticket.attributes.quantity">
+                    <md-input-container ng-if="ticket.editMode">
+                        <input required name="quantity" pattern="^\d{1,7}$" type="number" ng-model="ticket.attributes.quantity">
+                        <div ng-messages="ticketRow.quantity.$error" role="alert">
+                            <div ng-message-exp="['pattern', 'required']">Only numbers without decimal point allowed</div>
+                        </div>
+                    </md-input-container>
                 </td>
                 <td md-cell flex="20">
                     <span ng-if="!ticket.editMode">{{ticket.attributes.price}}</span>
-                    <input ng-if="ticket.editMode" ng-model="ticket.attributes.price">
+                    <md-input-container ng-if="ticket.editMode">
+                        <input required name="price" pattern="^(?!\s*$).+" ng-model="ticket.attributes.price">
+                        <div ng-messages="ticketRow.price.$error">
+                            <div ng-message-exp="['pattern', 'required']">This should not be empty.</div>
+                        </div>
+                    </md-input-container>
                 </td>
                 <td md-cell flex="20">
                     <span ng-if="!ticket.editMode">{{ticket.attributes.status}}</span>
@@ -39,7 +54,7 @@
                 </td>
                 <td md-cell flex="10">
                     <md-button ng-if="!ticket.editMode" class="md-primary md-raised" ng-click="vm.editTicket(ticket)">Edit</md-button>
-                    <md-button ng-if="ticket.editMode" class="md-primary md-raised saveButton" ng-click="vm.saveTicket(ticket)">Save</md-button>
+                    <md-button ng-if="ticket.editMode" ng-disabled="ticketRow.$invalid" class="md-primary md-raised saveButton" ng-click="vm.saveTicket(ticket)">Save</md-button>
                     <md-button ng-if="ticket.editMode" class="md-primary md-raised" ng-click="vm.cancelTicket(ticket)">Cancel</md-button>
                 </td>
             </tr>

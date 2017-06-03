@@ -11,6 +11,7 @@ require.config({
         'angular-animate': '../bower_components/angular-animate/angular-animate.min',
         'angular-aria': '../bower_components/angular-aria/angular-aria.min',
         'angular-material': '../bower_components/angular-material/angular-material.min',
+        'angular-messages': '../bower_components/angular-messages/angular-messages.min',
         'angular-route': '../bower_components/angular-route/angular-route.min',
         'angular-sanitize': '../bower_components/angular-sanitize/angular-sanitize.min',
         'angular-translate': '../bower_components/angular-translate/angular-translate.min',
@@ -29,7 +30,10 @@ require.config({
             deps: ['angular'],
         },
         'angular-material': {
-            deps: ['angular', 'angular-animate', 'angular-aria'],
+            deps: ['angular', 'angular-animate', 'angular-aria', 'angular-messages'],
+        },
+        'angular-messages': {
+            deps: ['angular'],
         },
         'angular-route': {
             deps: ['angular'],

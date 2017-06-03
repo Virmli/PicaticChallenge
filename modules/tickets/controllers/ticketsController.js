@@ -29,8 +29,6 @@ define(['angular'], angular => angular.module('ticketsController', [])
          * @param ticket
          */
         vm.saveTicket = (ticket) => {
-
-            // TODO: impliment error checking.
             // constructing new object for DB call.
             const data = {
                 data: {
@@ -54,7 +52,7 @@ define(['angular'], angular => angular.module('ticketsController', [])
         };
 
         /**
-         * Cancel ticket function exist inline editing mode without
+         * Cancel ticket function exit inline editing mode without
          * saving changes to Data Base.
          * @param ticket
          */
