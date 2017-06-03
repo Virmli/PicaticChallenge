@@ -20,6 +20,10 @@ define(['angular'], angular => angular.module('ticketsController', [])
          * @param ticket
          */
         vm.editTicket = (ticket) => {
+            // This copy functionality needed when user
+            // clicks edit and changes ticket data and then uses
+            // the cancel button to get the old data
+            vm.copy = angular.copy(vm.TICKETS.tickets.ticketList);
             ticket.editMode = true;
         };
 
@@ -58,6 +62,7 @@ define(['angular'], angular => angular.module('ticketsController', [])
          */
         vm.cancelTicket = (ticket) => {
             delete ticket.editMode;
-            // TODO:logic to return previous valuse.
+            // returning old data if user decided to cancel his changes.
+            vm.TICKETS.tickets.ticketList = vm.copy;
         };
     }));
