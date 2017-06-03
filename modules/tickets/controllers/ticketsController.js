@@ -61,6 +61,7 @@ define(['angular'], angular => angular.module('ticketsController', [])
          * @param ticket
          */
         vm.cancelTicket = (ticket) => {
+            console.log(ticket.id);
             delete ticket.editMode;
             // returning old data if user decided to cancel his changes.
             vm.TICKETS.tickets.ticketList = vm.copy;

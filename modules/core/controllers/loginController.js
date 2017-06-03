@@ -9,6 +9,10 @@ define(['angular'], angular => angular.module('loginController', [])
             AUTH,
         });
 
+        // to remove blinking of the login page
+        // when user loggedIn and uses cookies
+        // we first assume that we do not need to show login screen.
+        vm.loggedIn = true;
 
         /**
          * Simple cookie implementation to remove login
@@ -20,6 +24,8 @@ define(['angular'], angular => angular.module('loginController', [])
                     vm.loggedIn = true;
                     AUTH.pages(res.id);
                 });
+        } else {
+            vm.loggedIn = false;
         }
         /**
          * Simple login function which accepts API key from the user
